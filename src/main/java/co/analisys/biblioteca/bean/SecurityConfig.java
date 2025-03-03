@@ -21,6 +21,8 @@ public class SecurityConfig {
         http
             .authorizeHttpRequests(authz -> authz
             .requestMatchers("/catalogo/public/**").permitAll()
+            .requestMatchers("/v3/api-docs/**").permitAll()
+            .requestMatchers("/swagger-ui/**").permitAll()
             .anyRequest().authenticated())
             .oauth2ResourceServer(oauth2 -> oauth2
             .jwt(jwt -> jwt.jwtAuthenticationConverter(jwtAuthenticationConverter())));
